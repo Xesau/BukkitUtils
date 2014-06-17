@@ -10,16 +10,18 @@ import org.bukkit.command.CommandSender;
 
 public class ECommand implements CommandExecutor {
 
-	public HashMap< String, ECommand > subCommands;
-	public CommandExecutor mainExecutor;
+	private HashMap< String, ECommand > subCommands;
+	private CommandExecutor mainExecutor;
+	private String helpMessage;
 	
 	/**
 	 * Construct an ExtendedCommand
 	 * @param executor The CommandExecutor if there's no subcommand used
 	 */
-	public ECommand( CommandExecutor executor )
+	public ECommand( CommandExecutor executor, String helpMessage )
 	{
 		this.mainExecutor = executor;
+		this.helpMessage = helpMessage;
 	}
 	
 	/**
@@ -27,9 +29,9 @@ public class ECommand implements CommandExecutor {
 	 * @param executor The CommandExecutor if there's no subcommand used
 	 * @parma subCommands A HashMap that includes all the sub commands
 	 */	
-	public ECommand( CommandExecutor executor, HashMap< String, ECommand > subCommands )
+	public ECommand( CommandExecutor executor, String helpMessage, HashMap< String, ECommand > subCommands )
 	{
-		this( executor );
+		this( executor, helpMessage );
 		this.subCommands = subCommands;
 	}
 	
@@ -56,6 +58,11 @@ public class ECommand implements CommandExecutor {
 			}
 		}
 		return false;
+	}
+	
+	public String getHelpMessage()
+	{
+		return helpMessage;
 	}
 
 }
