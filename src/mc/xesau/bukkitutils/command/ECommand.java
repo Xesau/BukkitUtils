@@ -64,5 +64,10 @@ public class ECommand implements CommandExecutor {
 	{
 		return helpMessage;
 	}
+	
+	public HashMap< String, ECommand > getSubCommands()
+	{
+		return subCommands;
+	}
 
 }
