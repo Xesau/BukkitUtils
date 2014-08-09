@@ -7,25 +7,31 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.plugin.Plugin;
 
-public class CommandSign {
+public class CommandSign implements Listener {
 
 	private Sign block;
 	private List< String > commands;
 	
-	public CommandSign( Sign block, List< String > commands) 
+	public CommandSign( Sign block, List< String > commands, Plugin plugin ) 
 	{
 		this.block = block;
 		this.commands = commands;
+		
+		Bukkit.getPluginManager().registerEvents( this, plugin );
 	}
 	
-	public CommandSign( Sign block, String command )
+	public CommandSign( Sign block, String command, Plugin plugin )
 	{
 		this.block = block;
 		this.commands = new ArrayList< String >();
 		commands.add( command );
+
+		Bukkit.getPluginManager().registerEvents( this, plugin );
 	}
 	
 	public Sign getBlock()
