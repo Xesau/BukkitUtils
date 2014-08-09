@@ -29,7 +29,7 @@ public class ItemBuilder {
 		this.amount = amount;
 		this.damageValue = damageValue;
 	}
-	
+
 	public ItemStack getItem()
 	{
 		ItemStack tmp = new ItemStack( item, amount, damageValue );
@@ -52,10 +52,15 @@ public class ItemBuilder {
 		return tmp;
 	}
 	
-	public ItemBuilder setItem( Material item )
+	public ItemBuilder setMaterial( Material item )
 	{
 		this.item = item;
 		return this;
+	}
+	
+	public Material getMaterial()
+	{
+		return item;
 	}
 	
 	public int getAmount()
@@ -67,6 +72,17 @@ public class ItemBuilder {
 	{
 		this.amount = amount;
 		return this;
+	}
+	
+	public ItemBuilder setDamageValue( byte damageValue )
+	{
+		this.damageValue = damageValue;
+		return this;
+	}
+	
+	public byte getDamageValue()
+	{
+		return damageValue;
 	}
 	
 	public ItemBuilder addEnchantment( Enchantment e, int level )
