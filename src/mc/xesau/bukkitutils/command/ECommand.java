@@ -1,6 +1,6 @@
 package mc.xesau.bukkitutils.command;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -35,7 +35,6 @@ public class ECommand implements CommandExecutor {
 		this.subCommands = subCommands;
 	}
 	
-	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if( args.length > 0 )
@@ -43,28 +42,36 @@ public class ECommand implements CommandExecutor {
 			if( subCommands.containsKey( args[0] ) )
 			{
 				// Create a List< String > with all the arguments for the sub command
-				List< String > subArguments = Arrays.asList( args );
+				ArrayList< String > subArguments = new ArrayList<String>( Arrays.asList( args ) );
 				
 				// Remove the sub command itself
 				subArguments.remove( 0 );
 				
 				// Run the command with the subArguments list converted back to an String[] array
-				subCommands.get( args[0] ).onCommand(sender, command, label, ( String[] ) subArguments.toArray() );
+				return subCommands.get( args[0] ).onCommand(sender, command, label, (String[]) subArguments.toArray( new String[0]) );
 			}
 			
 			else
 			{
-				mainExecutor.onCommand(sender, command, label, args);
+				return mainExecutor.onCommand(sender, command, label, args);
 			}
 		}
 		return false;
 	}
 	
+	/**
+	 * Get the command help message
+	 * @return the command help message
+	 */
 	public String getHelpMessage()
 	{
 		return helpMessage;
 	}
 	
+	/**
+	 * Get all the subcommands
+	 * @return a HashMap of subcommands
+	 */
 	public HashMap< String, ECommand > getSubCommands()
 	{
 		return subCommands;

@@ -1,3 +1,4 @@
 name: BukkitUtils
-description: A handful set of tools to use in Plugins
-version: 1.0
+author: Xesau
+version: 0.1
+main: mc.xesau.bukkitutils.BukkitUtils
