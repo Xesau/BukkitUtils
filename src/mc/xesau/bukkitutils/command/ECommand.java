@@ -50,13 +50,16 @@ public class ECommand implements CommandExecutor {
 				// Run the command with the subArguments list converted back to an String[] array
 				return subCommands.get( args[0] ).onCommand(sender, command, label, (String[]) subArguments.toArray( new String[0]) );
 			}
-			
 			else
 			{
-				return mainExecutor.onCommand(sender, command, label, args);
+				sender.sendMessage( helpMessage );
+				return false;
 			}
 		}
-		return false;
+		else
+		{
+			return mainExecutor.onCommand(sender, command, label, args);
+		}
 	}
 	
 	/**
