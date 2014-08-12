@@ -22,10 +22,10 @@ public class ConfigItemStack {
 		
 		ItemMeta tempMeta = temp.getItemMeta();
 		
-		tempMeta.setDisplayName( ref.getString( "displayname" ) );
-		tempMeta.setLore( ref.getStringList( "lore" ) );
+		tempMeta.setDisplayName( ref.getString( "metadata.displayname" ) );
+		tempMeta.setLore( ref.getStringList( "metadata.lore" ) );
 		
-		ConfigurationSection enchantments = ref.getConfigurationSection( "enchantments" );
+		ConfigurationSection enchantments = ref.getConfigurationSection( "metadata.enchantments" );
 		
 		for( String enchantment : enchantments.getKeys( false ) )
 		{
