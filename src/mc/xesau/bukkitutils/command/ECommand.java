@@ -10,9 +10,9 @@ import org.bukkit.command.CommandSender;
 
 public class ECommand implements CommandExecutor {
 
-	private HashMap< String, ECommand > subCommands;
+	private HashMap< String, ECommand > subCommands = new HashMap< String, ECommand >();
 	private CommandExecutor mainExecutor;
-	private String helpMessage;
+	private String helpMessage = "";
 	
 	/**
 	 * Construct an ExtendedCommand
@@ -41,6 +41,7 @@ public class ECommand implements CommandExecutor {
 		{
 			if( subCommands.containsKey( args[0] ) )
 			{
+				
 				// Create a List< String > with all the arguments for the sub command
 				ArrayList< String > subArguments = new ArrayList<String>( Arrays.asList( args ) );
 				
