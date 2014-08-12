@@ -17,6 +17,13 @@ public class CommandSign implements Listener {
 	private Sign block;
 	private List< String > commands;
 	
+	/**
+	 * Create a CommandSign instance with multiple commands
+	 * 
+	 * @param block The Sign block in the world
+	 * @param commands The List of commands to execute when the player clicks the sign
+	 * @param plugin Your plugin, to register the listener
+	 */
 	public CommandSign( Sign block, List< String > commands, Plugin plugin ) 
 	{
 		this.block = block;
@@ -25,6 +32,13 @@ public class CommandSign implements Listener {
 		Bukkit.getPluginManager().registerEvents( this, plugin );
 	}
 	
+	/**
+	 * Create a CommandSign instance with multiple commands
+	 * 
+	 * @param block The Sign block in the world
+	 * @param command The command to execute when the player clicks the sign
+	 * @param plugin Your plugin, to register the listener
+	 */
 	public CommandSign( Sign block, String command, Plugin plugin )
 	{
 		this.block = block;
@@ -34,11 +48,21 @@ public class CommandSign implements Listener {
 		Bukkit.getPluginManager().registerEvents( this, plugin );
 	}
 	
+	/**
+	 * Get the Sign
+	 * 
+	 * @return The sign block
+	 */
 	public Sign getBlock()
 	{
 		return block;
 	}
 	
+	/**
+	 * 
+	 * @param line
+	 * @param text
+	 */
 	public void setLine( int line, String text )
 	{
 		block.setLine( line, text );
@@ -81,4 +105,21 @@ public class CommandSign implements Listener {
 		}
 	}
 	
+	public List< String > getCommands()
+	{
+		return commands;
+	}
+	
+	public void addCommand( String command )
+	{
+		commands.add( command );
+	}
+	
+	public void addCommands( List< String > commands )
+	{
+		for( String command : commands )
+		{
+			this.commands.add( command );
+		}
+	}
 }
