@@ -7,9 +7,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 
 public class BukkitUtils extends org.bukkit.plugin.java.JavaPlugin {
-
+	
+	/**
+	 * An ArrayList of hooked plugins.
+	 */
 	private static ArrayList< Plugin > hookedPlugins = new ArrayList< Plugin >();
 	
+	/**
+	 * The command executor for the command /bukkitutils
+	 * 
+	 * @see {@link org.bukkit.command.CommandExecutor#onCommand(CommandSender, Command, String, String[])}
+	 */
 	public boolean onCommand( CommandSender sender, Command cmd, String label, String[] args )
 	{
 		if( cmd.getName().equalsIgnoreCase( "bukkitutils" ) )
@@ -34,6 +42,11 @@ public class BukkitUtils extends org.bukkit.plugin.java.JavaPlugin {
 		return false;
 	}
 	
+	/**
+	 * Hook a plugin
+	 * 
+	 * @param pl The plugin to hook
+	 */
 	public static void hook( Plugin pl )
 	{
 		if( !hookedPlugins.contains( pl ) )
