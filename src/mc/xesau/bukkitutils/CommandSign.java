@@ -83,6 +83,12 @@ public class CommandSign implements Listener {
 			block.setLine( 3, lines.get( 3 ) );
 	}
 	
+	/**
+	 * This void will be runned when Bukkit calls a PlayerInteractEvent
+	 * It will check if this block is clicked and then execute the commands.
+	 * 
+	 * @param e The event
+	 */
 	@EventHandler
 	public void onClick( PlayerInteractEvent e )
 	{
@@ -91,10 +97,7 @@ public class CommandSign implements Listener {
 			if( e.getClickedBlock().getType() == Material.SIGN_POST || e.getClickedBlock().getType() == Material.WALL_SIGN )
 			{
 				Sign b = ( Sign ) e.getClickedBlock();
-				if( b.getLocation().getWorld().getName() == block.getLocation().getWorld().getName() &&
-					b.getLocation().getX() == block.getLocation().getX() &&
-					b.getLocation().getY() == block.getLocation().getY() &&
-					b.getLocation().getZ() == block.getLocation().getZ() )
+				if( LocationUtils.isSame( b.getLocation(), e.getClickedBlock().getLocation() ) )
 				{
 					for( String cmd : commands )
 					{
