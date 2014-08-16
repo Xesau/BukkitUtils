@@ -43,6 +43,17 @@ public class BukkitUtils extends org.bukkit.plugin.java.JavaPlugin {
 	}
 	
 	/**
+	 * Disable all hooked plugins to prevent a memory leak
+	 */
+	public void onDisable()
+	{
+		for( Plugin pl : hookedPlugins )
+			unhook( pl );
+		
+		hookedPlugins = null;
+	}
+	
+	/**
 	 * Hook a plugin
 	 * 
 	 * @param pl The plugin to hook
@@ -51,6 +62,17 @@ public class BukkitUtils extends org.bukkit.plugin.java.JavaPlugin {
 	{
 		if( !hookedPlugins.contains( pl ) )
 			hookedPlugins.add( pl );
+	}
+	
+	/**
+	 * Unhook plugin <code>pl</code>
+	 * 
+	 * @param pl The plugin to unhook
+	 */
+	public static void unhook( Plugin pl )
+	{
+		if( hookedPlugins.contains( pl ) )
+			hookedPlugins.remove( pl );
 	}
 	
 }

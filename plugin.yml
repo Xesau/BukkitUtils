@@ -2,3 +2,8 @@ name: BukkitUtils
 author: Xesau
 version: 0.2.3
 main: mc.xesau.bukkitutils.BukkitUtils
+
+commands:
+  bukkitutils:
+    description: Get a list of hooked plugins
+    usage: /bukkitutils

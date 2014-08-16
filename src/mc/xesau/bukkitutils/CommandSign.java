@@ -3,6 +3,8 @@ package mc.xesau.bukkitutils;
 import java.util.ArrayList;
 import java.util.List;
 
+import mc.xesau.bukkitutils.location.LocationUtils;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;

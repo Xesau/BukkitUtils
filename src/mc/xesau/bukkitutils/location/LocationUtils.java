@@ -1,4 +1,4 @@
-package mc.xesau.bukkitutils;
+package mc.xesau.bukkitutils.location;
 
 import org.bukkit.Location;
 
