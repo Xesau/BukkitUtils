@@ -71,8 +71,9 @@ public class BukkitUtils extends org.bukkit.plugin.java.JavaPlugin {
 	 */
 	public static void unhook( Plugin pl )
 	{
-		if( hookedPlugins.contains( pl ) )
-			hookedPlugins.remove( pl );
+		if( pl != null )
+			if( hookedPlugins.contains( pl ) )
+				hookedPlugins.remove( pl );
 	}
 	
 }
