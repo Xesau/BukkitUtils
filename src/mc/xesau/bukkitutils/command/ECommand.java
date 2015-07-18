@@ -71,6 +71,11 @@ public class ECommand implements CommandExecutor {
 			}
 		}
 		
+		if (mainExecutor == null) {
+			sender.sendMessage (helpMessage);
+			return true;
+		}
+		
 		return mainExecutor.onCommand(sender, command, label, args);
 	}
 	
