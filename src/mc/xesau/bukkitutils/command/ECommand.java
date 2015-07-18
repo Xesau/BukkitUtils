@@ -36,7 +36,7 @@ public class ECommand implements CommandExecutor {
 	 */	
 	public ECommand( CommandExecutor executor, String helpMessage, HashMap< String, ECommand > subCommands )
 	{
-		this( executor, helpMessage, false );
+		this( executor, helpMessage, true );
 		
 		for( String subCommand : subCommands.keySet() )
 		{
